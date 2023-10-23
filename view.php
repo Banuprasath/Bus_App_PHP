@@ -5,6 +5,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
+  
 form {
     margin: 20px auto;
     max-width: 400px;
@@ -76,6 +77,17 @@ body {
 
 #ndf{
     color:red;
+}
+
+/* Add custom styles for the quote */
+.quote-text {
+    font-size: 28px; /* Adjust the font size as needed */
+    font-family: 'Times New Roman', serif; /* Specify the desired font-family */
+    font-style: italic; /* Apply italic style to the text */
+}
+
+.blockquote-footer {
+    font-size: 20px; /* Adjust the font size for the author's name */
 }
 
 
@@ -204,15 +216,93 @@ body {
 
 
 </style>
+<!---NAV BAR 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bus Management System</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Your Bus System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add New</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Edit Buses</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+  -->
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vali Kaatum Tholan</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BP Creations</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<!---NAV BAR -->
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="one.jpg" alt="First slide">
+      
     </div>
+      
+
+
+
+
+
+
     <div class="carousel-item">
       <img class="d-block w-100" src="two.jpg" alt="Second slide">
+      <p>Busses are good</p>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="three.jpg" alt="Third slide">
@@ -246,8 +336,8 @@ else{
 
 <form name='myform' method='post'>
 
-From:<input type='text' placeholder='From' name='frm'></br>
-To:<input type='text' placeholder='To' name='to'></br>
+From:<input type='text' placeholder='Where to Start' name='frm' ></br>
+To:<input type='text' placeholder='Where to Stop' name='to'></br>
 <input type='submit' value='submit' name='submit'></br>
 
 </form>
@@ -259,29 +349,33 @@ To:<input type='text' placeholder='To' name='to'></br>
         <th>Arrival</th>
         <th>Type</th>
 </tr>
+
+
+
 <?php
 
 
-if(!isset($_POST['submit'])){
-    $sql="select * from phpbus";
-    $result=$con->query($sql);
-    if($result->num_rows>0){
-        while($row=$result->fetch_assoc()){
+// if(!isset($_POST['submit'])){
+//     $sql="select * from phpbus";
+//     $result=$con->query($sql);
     
-            echo "<tr>";
+//     if($result->num_rows>0){
+//         while($row=$result->fetch_assoc()){
+    
+//             echo "<tr>";
            
-            echo "<td>".$row["src"]."</td>";
+//             echo "<td>".$row["src"]."</td>";
           
-            echo "<td>".$row["dep"]."</td>";
-            echo "<td>".$row["dest"]."</td>";
-            echo "<td>".$row["arr"]."</td>";
-            echo "<td>".$row["type"]."</td>";
-            echo "</tr>";
-        }
-    }
+//             echo "<td>".$row["dep"]."</td>";
+//             echo "<td>".$row["dest"]."</td>";
+//             echo "<td>".$row["arr"]."</td>";
+//             echo "<td>".$row["type"]."</td>";
+//             echo "</tr>";
+//         }
+//     }
 
 
-    }
+//     }
 
 
 
@@ -294,7 +388,10 @@ if(isset($_POST['submit'])){
     $sql="select * from phpbus where src LIKE '%$frm%' and dest LIKE '%$to%'; ";
 $result=$con->query($sql);
 if($result->num_rows>0){
+  $check =1;
+  
     while($row=$result->fetch_assoc()){
+      
 
         echo "<tr>";
        
@@ -309,15 +406,83 @@ if($result->num_rows>0){
 }
 else{
     echo "<tr id='ndf'>";
-    echo "<center><td colspan='6' id='ndf' >No Bus Found</td></center>";
+    echo "<center><td colspan='6' id='ndf' >No Bus Found </td></center>";
     echo "</center>";
 }
 
+echo "</table>";
+/*echo '<div class="quote-container">
+<blockquote class="blockquote text-center">
+    <p class="quote-text">"The journey of a thousand miles begins with a single step."</p>
+    <footer class="blockquote-footer">- Lao Tzu</footer>
+</blockquote>
+</div>';
 
-
+*/
 
 }
 
 
 
 ?>
+
+</table>
+
+<div class="quote-container">
+<blockquote class="blockquote text-center">
+    <p class="quote-text">"The journey of a thousand miles begins with a single step."</p>
+    <footer class="blockquote-footer">- Lao Tzu</footer>
+</blockquote>
+</div>
+<br>
+
+<!-- ONUM PURIYALA --->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Helper</title>
+</head>
+<body>
+    <div class="road">
+        <div class="bus"></div>
+    </div>
+</body>
+</html>
+
+<style>
+
+.road {
+    background: url('images/road1.png')center/contain repeat;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bus {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: -100px; /* Initial position off the left side */
+    animation: moveBus 10s linear infinite; /* Slower animation settings */
+    background: url('images/bus.png') center/contain no-repeat; /* Bus image */
+    border-radius: 10px; /* Rounded corners to make it look like a bus */
+}
+
+@keyframes moveBus {
+    0% {
+        left: -100px; /* Start position */
+    }
+    100% {
+        left: 100%; /* End position */
+    }
+}
+
+
+
+</style>
+
+    
